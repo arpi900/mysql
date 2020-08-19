@@ -1,0 +1,35 @@
+Inner Join
+1. select orders.order_name,employees.emp_name from orders
+    -> INNER JOIN employees
+    -> on orders.emp_id=employees.emp_id
+    -> order by orders.order_id;
+
+Left Join
+2. select orders.order_name,employees.emp_name from orders LEFT JOIN employees on 		  	orders.emp_id=employees.emp_id order by orders.order_id;
+
+Right Join
+3.select orders.order_name,employees.emp_name from orders RIGHT JOIN employees on 		     orders.emp_id=employees.emp_id order by orders.order_id; 
+
+
+Cross Join
+4. select order_name,emp_name from orders CROSS JOIN employees;
+
+Full outer join
+5. select orders.order_name,employees.emp_name from orders LEFT JOIN employees on 			orders.emp_id=employees.emp_id
+		UNION
+select orders.order_name,employees.emp_name from orders RIGHT JOIN employees on 		     orders.emp_id=employees.emp_id
+
+
+MySQL UPDATE INNER JOIN
+=> adjust the salary of persons based on their performance.
+
+1. update person inner join merits on person.performance=merits.performance set salary=salary+salary*percentage;
+
+=> we add 2 more new persons whose performance is null in this case we need to use left join
+2.  UPDATE person LEFT JOIN merits ON person.performance = merits.performance  SET salary = salary + salary * 0.015;
+
+
+MySQL DELETE INNER JOIN:
+=>MySQL also allows you to use the INNER JOIN clause in the DELETE statement to delete rows from a table and the matching rows in another table.
+
+1. DELETE t1,t2 FROM t1 INNER JOIN t2 ON t2.ref = t1.id WHERE t1.id = 1;
