@@ -1,0 +1,40 @@
+1.For Female employee, employee salaries should come in descending order
+=>select name,gender,salary from employee
+  order by case gender
+  when 'F' then salary end DESC,
+  case when gender='M' then salary
+  end;
+
+2. we get statecode as per condition specified in CASE statement.
+=> select name,
+   case 
+   when salary >='80000' and salary <='90000' then 'IN'
+   when salary >='50000' and salary <='80000' then 'FL'
+   else 'AL'
+   end as statecode from employee;
+
+3. to get max and min salary of designation using group by
+=> select case
+   when salary >=80000 and salary <=90000 then 'director'
+   when salary >=50000 and salary <80000 then 'senior'
+   else 'director'
+   end as designation,
+   MIN(salary) as Minimumsalary,
+   MAX(salary) as Maximumsalary
+   from employee
+   group by
+   case
+   when salary >=80000 and salary <= 90000 then 'director'
+   when salary >=50000 and salary <80000 then 'senior'
+   else 'director'
+   end;
+
+4. update using case statement
+=> update employee 
+   set statecode = case statecode
+   when 'AL' then 'FL'
+   when 'GE' then 'AL'
+   else 'IN'
+   end;
+
+
