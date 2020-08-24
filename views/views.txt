@@ -1,0 +1,39 @@
+1.Creating View from a single table
+
+  => create view detailsview as select name,address 
+  from studentdetails where s_id < 5;
+
+
+
+2.Creating views on student names
+  => create view studentnames as select s_id,name 
+     from studentdetails order by name;
+
+
+
+3. Creating views on multiple tables.
+
+  =>create view marksview as select studentdetails.name,studentdetails.address,studentmarks.marks  from studentdetails,studentmarks 
+where studentdetails.name=studentmarks.name;
+
+
+4. Deleting the views.
+
+ => DROP view marksview;
+
+
+5. Updating the views, adding age field to the views.
+
+   => create or replace view marksview as select  studentdetails.name,studentdetails.address,studentmarks.marks,studentmarks.age from studentdetails,studentmarks where studentdetails.name=studentmarks.name;
+
+6. Deleting rows from views.
+   
+   => delete from detailsview where name='Pratik';
+
+
+7. To display list of views created.
+   => SELECT TABLE_SCHEMA,TABLE_NAME
+      FROM INFORMATION_SCHEMA.VIEWS;
+
+8. Renaming the views.
+  =>SP_Rename 'Old Name', 'New name'
